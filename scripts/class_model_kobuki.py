@@ -23,4 +23,25 @@ class KobukiModel:
 
         #Definicion matrices J1 y J2
 
+<<<<<<< Updated upstream
         
+=======
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+=======
+        J1 = 
+=======
+        J1 = np.array
+>>>>>>> Stashed changes
+
+
+        J2 = 
+        
+        #Jacob_inv
+
+<<<<<<< Updated upstream
+>>>>>>> 649a96ee97c9fd6af1754b5359ee2b109b959841
+        
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
