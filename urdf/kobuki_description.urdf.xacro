@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+
+<robot name="kobuki" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <!-- Include Parameters -->
+  <xacro:include filename="$(find kobuki_pkg)/urdf/kobuki_parameters.urdf.xacro"/>
+  
+  <!-- ************************************************************************************************ -->
+  <!-- ************************************************************************************************ -->
+  <!-- Kobuki Model-->
+
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0.0102" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+
+  <!-- Base Link -->
+  <link_base_kobuki 
+    name="base_link"
+    visual_rpy="0 0 0" 
+    visual_xyz="0.001 0 0.05199"
+    inertial_rpy="0 0 0" 
+    inertial_xyz="0.01 0 0"
+    collision_rpy="0 0 0"
+    collision_xyz="0.0 0 0.05949"
+    cylinder_length="0.10938"
+    cylinder_radius="0.178"
+    meshfile="package://kobuki_pkg/meshes/body.dae"
+    mass="2.4"
+    ixx="0.019995" ixy="0.0" ixz="0.0"
+    iyy="0.019995" iyz="0.0" izz="0.03675"	
+  />  
+
+  <!-- Left Traction Wheel -->
+
+  <joint name="wheel_left_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_left_link"/>
+    <origin xyz="0.00 ${0.23/2} 0.0250" rpy="${-M_PI/2} 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link_wheel_kobuki 
+    name="wheel_left_link"
+    visual_rpy="0 0 0" 
+    visual_xyz="0 0 0"
+    inertial_rpy="0 0 0" 
+    inertial_xyz="0 0 0"
+    collision_rpy="0 0 0"
+    collision_xyz="0 0 0"
+    cylinder_length="0.0206"
+    cylinder_radius="0.035"
+    meshfile="package://kobuki_pkg/meshes/wheel.dae"
+    mass="0.01"
+    ixx="0.001" ixy="0.0" ixz="0.0"
+    iyy="0.001" iyz="0.0" izz="0.001"	
+  />  
+
+  <!-- Right Traction Wheel -->
+
+  <joint name="wheel_right_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_right_link"/>
+    <origin xyz="0.00 -${0.23/2} 0.0250" rpy="${-M_PI/2} 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link_wheel_kobuki  
+    name="wheel_right_link"
+    visual_rpy="0 0 0" 
+    visual_xyz="0 0 0"
+    inertial_rpy="0 0 0" 
+    inertial_xyz="0 0 0"
+    collision_rpy="0 0 0"
+    collision_xyz="0 0 0"
+    cylinder_length="0.0206"
+    cylinder_radius="0.035"
+    meshfile="package://kobuki_pkg/meshes/wheel.dae"
+    mass="0.01"
+    ixx="0.001" ixy="0.0" ixz="0.0"
+    iyy="0.001" iyz="0.0" izz="0.001"	
+  />  
+
+  <!-- Front Castor Wheel -->
+
+  <joint name="caster_front_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_front_link"/>
+    <origin xyz="0.115 0.0 0.007" rpy="${-M_PI/2} 0 0"/>
+  </joint>
+
+  <link_castor_kobuki 
+    name="caster_front_link"
+    inertial_rpy="0 0 0" 
+    inertial_xyz="0 0 0"
+    collision_rpy="0 0 0"
+    collision_xyz="0 0 0"
+    cylinder_length="0.0176"
+    cylinder_radius="0.017"
+    mass="0.01"
+    ixx="0.001" ixy="0.0" ixz="0.0"
+    iyy="0.001" iyz="0.0" izz="0.001"	
+  />  
+
+  <!-- Back Castor Wheel -->
+
+  <joint name="caster_back_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_back_link"/>
+    <origin xyz="-0.135 0.0 0.009" rpy="${-M_PI/2} 0 0"/>
+  </joint>
+
+  <link_castor_kobuki 
+    name="caster_back_link"
+    inertial_rpy="0 0 0" 
+    inertial_xyz="0 0 0"
+    collision_rpy="0 0 0"
+    collision_xyz="0 0 0"
+    cylinder_length="0.0176"
+    cylinder_radius="0.017"
+    mass="0.01"
+    ixx="0.001" ixy="0.0" ixz="0.0"
+    iyy="0.001" iyz="0.0" izz="0.001"	
+  />  
+
+
+</robot>

@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<robot name="kobuki_parameters" xmlns:xacro="http://ros.org/wiki/xacro">
+    
+    <xacro:property name="M_PI" value="3.1415926535897931" /> 
+  
+    <material name="Black">
+        <color rgba="0.22 0.22 0.22 1.0"/>
+    </material>
+  
+    <!-- Base Link Macro -->
+    <xacro:macro 
+    name="link_base_kobuki" 
+    params="name visual_rpy visual_xyz inertial_xyz inertial_rpy 
+            collision_xyz collision_rpy meshfile 
+            mass ixx ixy ixz iyy iyz izz cylinder_length cylinder_radius">
+
+        <link name="${name}">
+            <visual>
+                <origin rpy="${visual_rpy}" xyz="${visual_xyz}" />
+                <geometry>
+                    <mesh filename="${meshfile}"/>
+                </geometry>
+                <material name="Black"/>
+            </visual> 
+        
+            <inertial>
+                <mass value="${mass}" />
+                <origin rpy="${inertial_rpy}" xyz="${inertial_xyz}" />
+                <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+            </inertial>
+
+            <collision>
+                <origin rpy="${collision_rpy}" xyz="${collision_xyz}" />
+                <geometry>
+                    <cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+    <!-- Traction Wheels Link Macro -->
+    <xacro:macro 
+    name="link_wheel_kobuki" 
+    params="name visual_rpy visual_xyz inertial_xyz inertial_rpy 
+            collision_xyz collision_rpy meshfile 
+            mass ixx ixy ixz iyy iyz izz cylinder_length cylinder_radius">
+
+        <link name="${name}">
+            <visual>
+                <origin rpy="${visual_rpy}" xyz="${visual_xyz}" />
+                <geometry>
+                    <mesh filename="${meshfile}"/>
+                </geometry>
+                <material name="Black"/>
+            </visual> 
+        
+            <inertial>
+                <mass value="${mass}" />
+                <origin rpy="${inertial_rpy}" xyz="${inertial_xyz}" />
+                <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+            </inertial>
+
+            <collision>
+                <origin rpy="${collision_rpy}" xyz="${collision_xyz}" />
+                <geometry>
+                    <cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <!-- <gazebo reference="${wheel_prefix}_wheel_link">
+			<mu1>0.01</mu1>
+            <mu2>1</mu2>
+            <fdir1>0 0 1</fdir1>
+		</gazebo>
+
+		<joint name="${wheel_prefix}_wheel" type="continuous">
+			<parent link="base_link"/>
+			<child link="${wheel_prefix}_wheel_link"/>
+			<xacro:insert_block name="joint_pose"/>
+			<axis xyz="0 1 0" rpy="0 0 0" />
+		</joint>
+
+		<transmission name="${wheel_prefix}_wheel_trans" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="${wheel_prefix}_wheel_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="${wheel_prefix}_wheel">
+				<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			</joint>
+        </transmission> -->
+        
+    </xacro:macro>
+
+    <!-- Castor Wheels Link Macro -->
+    <xacro:macro 
+    name="link_castor_kobuki" 
+    params="name inertial_xyz inertial_rpy collision_xyz collision_rpy  
+            mass ixx ixy ixz iyy iyz izz cylinder_length cylinder_radius">
+
+        <link name="${name}">
+            <inertial>
+                <mass value="${mass}" />
+                <origin rpy="${inertial_rpy}" xyz="${inertial_xyz}" />
+                <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+            </inertial>
+
+            <collision>
+                <origin rpy="${collision_rpy}" xyz="${collision_xyz}" />
+                <geometry>
+                    <cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>
+                </geometry>
+            </collision>
+
+        </link>
+    </xacro:macro>
+
+
+</robot>
