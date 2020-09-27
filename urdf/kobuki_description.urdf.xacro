@@ -3,6 +3,8 @@
 <robot name="kobuki" xmlns:xacro="http://ros.org/wiki/xacro">
 
 
+  <xacro:arg name="robot_namespace" default="/" />
+
   <!-- Include Parameters -->
   <xacro:include filename="$(find kobuki_pkg)/urdf/kobuki_parameters.urdf.xacro"/>
   
@@ -37,15 +39,13 @@
 
   <!-- Left Traction Wheel -->
 
-  <joint name="wheel_left_joint" type="continuous">
-    <parent link="base_link"/>
-    <child link="wheel_left_link"/>
-    <origin xyz="0.00 ${0.23/2} 0.0250" rpy="${-M_PI/2} 0 0"/>
-    <axis xyz="0 0 1"/>
-  </joint>
+  <wheel_kobuki 
+    name="wheel_left"
 
-  <link_wheel_kobuki 
-    name="wheel_left_link"
+    joint_origin_xyz="0.00 ${0.23/2} 0.0250"
+    joint_origin_rpy="${-M_PI/2} 0 0"
+    joint_axis_xyz="0 0 1"
+
     visual_rpy="0 0 0" 
     visual_xyz="0 0 0"
     inertial_rpy="0 0 0" 
@@ -62,15 +62,13 @@
 
   <!-- Right Traction Wheel -->
 
-  <joint name="wheel_right_joint" type="continuous">
-    <parent link="base_link"/>
-    <child link="wheel_right_link"/>
-    <origin xyz="0.00 -${0.23/2} 0.0250" rpy="${-M_PI/2} 0 0"/>
-    <axis xyz="0 0 1"/>
-  </joint>
+   <wheel_kobuki  
+    name="wheel_right"
 
-  <link_wheel_kobuki  
-    name="wheel_right_link"
+    joint_origin_xyz="0.00 -${0.23/2} 0.0250"
+    joint_origin_rpy="${-M_PI/2} 0 0"
+    joint_axis_xyz="0 0 1"
+
     visual_rpy="0 0 0" 
     visual_xyz="0 0 0"
     inertial_rpy="0 0 0" 
@@ -87,14 +85,12 @@
 
   <!-- Front Castor Wheel -->
 
-  <joint name="caster_front_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="caster_front_link"/>
-    <origin xyz="0.115 0.0 0.007" rpy="${-M_PI/2} 0 0"/>
-  </joint>
+  <castor_wheel_kobuki 
+    name="caster_front"
 
-  <link_castor_kobuki 
-    name="caster_front_link"
+    joint_origin_xyz="0.115 0.0 0.007"
+    joint_origin_rpy="${-M_PI/2} 0 0"
+
     inertial_rpy="0 0 0" 
     inertial_xyz="0 0 0"
     collision_rpy="0 0 0"
@@ -108,14 +104,12 @@
 
   <!-- Back Castor Wheel -->
 
-  <joint name="caster_back_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="caster_back_link"/>
-    <origin xyz="-0.135 0.0 0.009" rpy="${-M_PI/2} 0 0"/>
-  </joint>
+  <castor_wheel_kobuki 
+    name="caster_back"
 
-  <link_castor_kobuki 
-    name="caster_back_link"
+    joint_origin_xyz="-0.135 0.0 0.009"
+    joint_origin_rpy="${-M_PI/2} 0 0"
+
     inertial_rpy="0 0 0" 
     inertial_xyz="0 0 0"
     collision_rpy="0 0 0"
@@ -127,5 +121,15 @@
     iyy="0.001" iyz="0.0" izz="0.001"	
   />  
 
+
+  <!-- ******************************************************************************* -->
+  <!-- ******************************************************************************* -->
+  <!-- Gazebo Plugins -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
 
 </robot>
