@@ -23,4 +23,14 @@ class KobukiModel:
 
         #Definicion matrices J1 y J2
 
+<<<<<<< HEAD
+=======
+        J1 = 
+
+
+        J2 = 
+        
+        #Jacob_inv
+
+>>>>>>> 649a96ee97c9fd6af1754b5359ee2b109b959841
         

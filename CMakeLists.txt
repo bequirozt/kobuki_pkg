@@ -11,16 +11,12 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   rospy
   std_msgs
-<<<<<<< HEAD
-  
-=======
   rviz
   tf
   urdf
   controller_manager
   joint_state_controller
   robot_state_publisher
->>>>>>> master
 )
 
 ## System dependencies are found with CMake's conventions
