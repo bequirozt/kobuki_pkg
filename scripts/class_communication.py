@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 import rospy
 from sensor_msgs.msg import LaserScan
@@ -43,7 +43,6 @@ class communication:
                 self.flagCmd = False
                 vel2Send = self.modelKobuki.WheelVelocities(self.velX,self.velX,self.velAng)
 
-
                 #Rueda derecha (right)
                 msg = Float64()
                 msg.data = vel2Send[0]
@@ -63,6 +62,6 @@ class communication:
             self.velY   = cmd.linear.y
             self.velAng = cmd.angular.z
 
-            self.flagCmd = True;
+            self.flagCmd = True
 
             
