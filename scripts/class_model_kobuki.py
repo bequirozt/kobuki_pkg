@@ -6,7 +6,7 @@ class KobukiModel:
 
     def __init__(self):
 
-        #Ruedas
+        #Ruedas.
         radius =  #*-*-*-*-* Pendiente *-*-*-*-*-*-*-*-*
 
         #Rueda izquierda (left)
