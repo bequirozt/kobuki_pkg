@@ -22,8 +22,7 @@
 
   
   <!-- Base Link -->
-  <!-- ixx="0.019995" ixy="0.0" ixz="0.0" -->
-    <!-- iyy="0.019995" iyz="0.0" izz="0.03675"	 -->
+  
   <link_base_kobuki 
     name="base_link"
     visual_rpy="0 0 0" 
@@ -38,9 +37,6 @@
     mass="2.4"
     ixx="0.021403" ixy="0.0" ixz="0.0"
     iyy="0.021403" iyz="0.0" izz="0.038020"	
-
- 
-
   />  
 
   <!-- Left Traction Wheel -->

@@ -4,11 +4,9 @@ import numpy
 
 import rospy
 from rospy.numpy_msg import numpy_msg
-
-from std_msgs.msg import Float64 #Flotante que reciben las ruedas
-from geometry_msgs.msg import Twist #Definir cinematica ruedas
-
-from class_model_kobuki import KobukiModel
+from std_msgs.msg import Float64 
+from geometry_msgs.msg import Twist
+from kobuki_model import Kobuki
 
 class Communication:
 

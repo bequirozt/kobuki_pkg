@@ -21,23 +21,22 @@ def main(stdscr):
     stdscr.clear()
     stdscr.scrollok(1)
     stdscr.addstr("Menu:\n")
-    stdscr.addstr("Press S to stop the robot \n")
-    stdscr.addstr("Press A to spin to the left \n")
-    stdscr.addstr("Press D to spin to the right \n")
-    stdscr.addstr("Press W to move forward \n")
-    stdscr.addstr("Press S to move backwards \n")
-    stdscr.addstr("Press Q to quit KeyOp \n")
+    stdscr.addstr("Forward: KEY_UP \n")
+    stdscr.addstr("Backward: KEY_DOWN \n")
+    stdscr.addstr("Left: KEY_LEFT \n")
+    stdscr.addstr("Right: KEY_RIGHT \n")
+    stdscr.addstr("Stop: SPACE BAR \n")
+    stdscr.addstr("Quit: Q \n")
 
     while not rospy.is_shutdown():
         try:
             key = str(stdscr.getkey())
-            print key
             processKey(stdscr, key)
             # print cmd
             if key == '\n':
                 break
         except Exception as e:
-        # No input
+            # No input
             pass
             pub.publish(cmd)
             rate.sleep()
@@ -48,10 +47,10 @@ def main(stdscr):
 
 def processKey(stdscr, key):
     global cmd
-    stdscr.addstr("Detected key:")
-    stdscr.addstr(key)
-    stdscr.addstr("nn")
-    if key == ' ' or key == 's' or key == 'S':
+    # stdscr.addstr("Detected key:")
+    # stdscr.addstr(key)
+    # stdscr.addstr("nn")
+    if key == ' ':
         stop(stdscr)
     elif key == 'q' or key == 'Q':
         quit(stdscr)
@@ -62,37 +61,37 @@ def processKey(stdscr, key):
 
 def stop(stdscr):
     global cmd
-    stdscr.addstr("Robot is stopping now\n")
+    # stdscr.addstr("Robot is stopping now\n")
     cmd.linear.x = 0.0
     cmd.angular.z = 0.0
 
 def quit(stdscr):
-    stdscr.addstr("Exiting node\n")
+    # stdscr.addstr("Exiting node\n")
     rospy.signal_shutdown("Manual shutdown\n")
 
 def changingAngular(stdscr, key):
     global cmd
-    stdscr.addstr("Changing angular speed\n")
+    # stdscr.addstr("Changing angular speed\n")
     if key == 'KEY_LEFT':
-        cmd.angular.z = cmd.angular.z + angularStep
-    if cmd.angular.z > 180:
-        cmd.angular.z = 180.0
+        cmd.angular.z = cmd.angular.z + angular_step
+    if cmd.angular.z > angular_limit:
+        cmd.angular.z = angular_limit
     elif key == 'KEY_RIGHT':
-        cmd.angular.z = cmd.angular.z - angularStep
-    if cmd.angular.z < -180:
-        cmd.angular.z = -180.0
+        cmd.angular.z = cmd.angular.z - angular_step
+    if cmd.angular.z < -angular_limit:
+        cmd.angular.z = -angular_limit
 
 def changingLinear(stdscr, key):
     global cmd
-    stdscr.addstr("Changing linear speed\n")
+    # stdscr.addstr("Changing linear speed\n")
     if key == 'KEY_UP':
-        cmd.linear.x = cmd.linear.x + linearStep
-    if cmd.linear.x > 1:
-        cmd.linear.x = 1.0
+        cmd.linear.x = cmd.linear.x + linear_step
+    if cmd.linear.x > linear_limit:
+        cmd.linear.x = linear_limit
     elif key == 'KEY_DOWN':
-        cmd.linear.x = cmd.linear.x - linearStep
-    if cmd.linear.x < -1:
-        cmd.linear.x = -1.0
+        cmd.linear.x = cmd.linear.x - linear_step
+    if cmd.linear.x < -linear_limit:
+        cmd.linear.x = -linear_limit
 
 cmd = Twist()
 cmd.linear.x = 0.0
@@ -101,6 +100,8 @@ cmd.linear.z = 0.0
 cmd.angular.x = 0.0
 cmd.angular.y = 0.0
 cmd.angular.z = 0.0
-linearStep = 1
-angularStep = np.pi*.7
+linear_limit = 1
+linear_step = linear_limit*.1
+angular_limit = np.pi 
+angular_step = angular_limit*.1
 curses.wrapper(main)

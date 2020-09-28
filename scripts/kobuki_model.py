@@ -2,7 +2,7 @@
 
 import numpy as np
 
-class KobukiModel:
+class Kobuki:
 
     def __init__(self):
 
