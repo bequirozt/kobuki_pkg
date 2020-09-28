@@ -82,7 +82,7 @@
     collision_rpy="0 0 0"
     collision_xyz="0 0 0"
     cylinder_length="0.0206"
-    cylinder_radius="0.037"
+    cylinder_radius="0.035"
     meshfile="package://kobuki_pkg/meshes/wheel.dae"
     mass="0.01"
     ixx="0.001" ixy="0.0" ixz="0.0"

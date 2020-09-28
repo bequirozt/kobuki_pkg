@@ -15,7 +15,7 @@ class Communication:
     def __init__(self):
 
         # Atributos
-        self.topicSubscriber = "/cmd_vel"
+        self.topicSubscriber = "kobuki/cmd_vel"
         self.topicPublisherL = "left_wheel_controller/command"
         self.topicPublisherR = "right_wheel_controller/command"
         self.velX   = 0.0
@@ -24,8 +24,8 @@ class Communication:
         self.flagCmd = False
 
         # Atributos Publisher-Subscriber
-        self.publisherVelL = rospy.Publisher(self.topicPublisherL, numpy_msg(Float64))
-        self.publisherVelR = rospy.Publisher(self.topicPublisherR, numpy_msg(Float64))
+        self.publisherVelL = rospy.Publisher(self.topicPublisherL, Float64)
+        self.publisherVelR = rospy.Publisher(self.topicPublisherR, Float64)
         #Subscriptor
         rospy.Subscriber(self.topicSubscriber, numpy_msg(Twist), self.cmd_vel_callback)
         

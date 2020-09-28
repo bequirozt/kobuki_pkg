@@ -76,8 +76,8 @@
       respawn="false"
       output="screen"
       args=  "joint_state_controller 
-              left_wheel_ctrl
-              right_wheel_ctrl"
+              left_wheel_controller
+              right_wheel_controller"
   />
 
 </launch>
