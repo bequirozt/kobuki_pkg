@@ -8,13 +8,11 @@
   <arg name="robot_description_xacro" value="$(find kobuki_pkg)/urdf/kobuki_description.urdf.xacro
                                     robot_namespace:=$(arg robot_name)"/>
 
-                                    
-                                    <param name="robot_description"  
-                                    command="$(find xacro)/xacro --inorder /$(arg robot_description_xacro)" 
-                                    />
-                                    
-                                    <!-- ************************************************************************************************ -->
-                                    <!-- ************************************************************************************************ -->
+<param name="robot_description"  
+command="$(find xacro)/xacro --inorder /$(arg robot_description_xacro)" />
+
+<!-- ************************************************************************************************ -->
+<!-- ************************************************************************************************ -->
   <!-- Create the Robot State Publisher -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
   

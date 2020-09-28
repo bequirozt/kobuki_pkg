@@ -20,7 +20,10 @@
     <child link="base_link" />
   </joint>
 
+  
   <!-- Base Link -->
+  <!-- ixx="0.019995" ixy="0.0" ixz="0.0" -->
+    <!-- iyy="0.019995" iyz="0.0" izz="0.03675"	 -->
   <link_base_kobuki 
     name="base_link"
     visual_rpy="0 0 0" 
@@ -31,10 +34,13 @@
     collision_xyz="0.0 0 0.05949"
     cylinder_length="0.10938"
     cylinder_radius="0.178"
-    meshfile="package://kobuki_pkg/meshes/body.dae"
+    meshfile="package://kobuki_pkg/meshes/main_body.dae"
     mass="2.4"
-    ixx="0.019995" ixy="0.0" ixz="0.0"
-    iyy="0.019995" iyz="0.0" izz="0.03675"	
+    ixx="0.021403" ixy="0.0" ixz="0.0"
+    iyy="0.021403" iyz="0.0" izz="0.038020"	
+
+ 
+
   />  
 
   <!-- Left Traction Wheel -->
@@ -56,8 +62,8 @@
     cylinder_radius="0.035"
     meshfile="package://kobuki_pkg/meshes/wheel.dae"
     mass="0.01"
-    ixx="0.001" ixy="0.0" ixz="0.0"
-    iyy="0.001" iyz="0.0" izz="0.001"	
+    ixx="0.000892" ixy="0.0" ixz="0.0"
+    iyy="0.000892" iyz="0.0" izz="0.001584"	
   />  
 
   <!-- Right Traction Wheel -->
@@ -76,7 +82,7 @@
     collision_rpy="0 0 0"
     collision_xyz="0 0 0"
     cylinder_length="0.0206"
-    cylinder_radius="0.035"
+    cylinder_radius="0.037"
     meshfile="package://kobuki_pkg/meshes/wheel.dae"
     mass="0.01"
     ixx="0.001" ixy="0.0" ixz="0.0"

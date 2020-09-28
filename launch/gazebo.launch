@@ -21,8 +21,10 @@
 
   <!-- <node pkg="rviz" type="rviz" name="rviz_visualization" args="-d $(find kobuki_pkg)/rviz/rviz_config.rviz"/> -->
   
-  <param name="use_gui" value="True"/>
-  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_st_pub" />
+  <!-- <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" /> -->
+  <node name="rqt_publisher" pkg="rqt_publisher" type="rqt_publisher" />
+
+  <!-- <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_st_pub" /> -->
 
   <!-- ************************************************************************************************ -->
   <!-- ************************************************************************************************ -->
@@ -77,12 +79,5 @@
               left_wheel_ctrl
               right_wheel_ctrl"
   />
-  
-  
-   <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
-   <node name="rqt_publisher" pkg="rqt_publisher" type="rqt_publisher" />
-
-  
-
 
 </launch>

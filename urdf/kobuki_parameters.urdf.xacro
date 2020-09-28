@@ -72,7 +72,8 @@
             <collision>
                 <origin rpy="${collision_rpy}" xyz="${collision_xyz}" />
                 <geometry>
-                    <cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>
+                    <!-- <cylinder length="${cylinder_length}" radius="${cylinder_radius}"/> -->
+                    <sphere radius="${cylinder_radius}"/>
                 </geometry>
             </collision>
         </link>
@@ -120,7 +121,8 @@
             <collision>
                 <origin rpy="${collision_rpy}" xyz="${collision_xyz}" />
                 <geometry>
-                    <cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>
+                    <!-- <cylinder length="${cylinder_length}" radius="${cylinder_radius}"/> -->
+                    <sphere radius="${cylinder_radius}"/>
                 </geometry>
             </collision>
 
